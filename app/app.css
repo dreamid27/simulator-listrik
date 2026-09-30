@@ -7,8 +7,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
+    --background: oklch(0.985 0.006 300);
+    --foreground: oklch(0.2 0.03 295);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
@@ -25,12 +25,31 @@
     --border: oklch(0.922 0 0);
     --input: oklch(0.922 0 0);
     --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
+    --chart-1: oklch(0.496 0.265 301.924);
+    --chart-2: oklch(0.68 0.13 190);
+    --chart-3: oklch(0.78 0.15 75);
+    --chart-4: oklch(0.65 0.18 10);
+    --chart-5: oklch(0.64 0.15 245);
+    --radius: 0.75rem;
+
+    /* Simulator — warna tambahan */
+    --energy: oklch(0.84 0.16 84);
+    --energy-soft: oklch(0.97 0.05 92);
+    --energy-deep: oklch(0.62 0.15 62);
+    --safe: oklch(0.6 0.15 158);
+    --safe-soft: oklch(0.96 0.04 160);
+    --warn: oklch(0.7 0.16 55);
+    --warn-soft: oklch(0.97 0.04 70);
+    --danger-soft: oklch(0.96 0.03 25);
+    --cold: oklch(0.72 0.12 230);
+    --heat: oklch(0.68 0.2 35);
+    --ink: oklch(0.3 0.07 295);
+    --art-body: oklch(0.995 0.003 300);
+    --art-soft: oklch(0.94 0.035 300);
+    --art-mid: oklch(0.84 0.08 300);
+    --art-accent: oklch(0.66 0.19 300);
+    --art-glass: oklch(0.32 0.06 290);
+    --night: oklch(0.24 0.05 285);
     --sidebar: oklch(0.985 0 0);
     --sidebar-foreground: oklch(0.145 0 0);
     --sidebar-primary: oklch(0.558 0.288 302.321);
@@ -109,6 +128,21 @@
     --color-card: var(--card);
     --color-foreground: var(--foreground);
     --color-background: var(--background);
+    --color-energy: var(--energy);
+    --color-energy-soft: var(--energy-soft);
+    --color-energy-deep: var(--energy-deep);
+    --color-safe: var(--safe);
+    --color-safe-soft: var(--safe-soft);
+    --color-warn: var(--warn);
+    --color-warn-soft: var(--warn-soft);
+    --color-danger-soft: var(--danger-soft);
+    --color-cold: var(--cold);
+    --color-heat: var(--heat);
+    --color-ink: var(--ink);
+    --color-art-soft: var(--art-soft);
+    --color-art-mid: var(--art-mid);
+    --color-art-accent: var(--art-accent);
+    --color-night: var(--night);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -128,4 +162,55 @@
   html {
     @apply font-sans;
     }
+}
+
+/* ——— Animasi ilustrasi ——— */
+@keyframes sim-spin { to { transform: rotate(360deg); } }
+@keyframes sim-flow { to { stroke-dashoffset: -24; } }
+@keyframes sim-rise {
+  0% { transform: translateY(4px); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(-8px); opacity: 0; }
+}
+@keyframes sim-pulse { 50% { opacity: 0.45; } }
+@keyframes sim-glow { 50% { opacity: 0.7; transform: scale(0.94); } }
+@keyframes sim-shake {
+  25% { transform: translateX(-0.6px) rotate(-0.6deg); }
+  75% { transform: translateX(0.6px) rotate(0.6deg); }
+}
+@keyframes sim-bob { 50% { transform: translateY(-3px); } }
+@keyframes sim-flicker {
+  0%, 100% { opacity: 1; }
+  15% { opacity: 0.35; }
+  30% { opacity: 1; }
+  45% { opacity: 0.55; }
+  60% { opacity: 1; }
+}
+@keyframes sim-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.06); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes undo-bar { from { width: 100%; } to { width: 0%; } }
+@keyframes sim-alarm { 50% { box-shadow: 0 0 0 6px color-mix(in oklch, var(--destructive) 25%, transparent); } }
+
+.anim-spin { animation: sim-spin 0.6s linear infinite; transform-box: fill-box; transform-origin: center; }
+.anim-spin-slow { animation: sim-spin 2.4s linear infinite; transform-box: fill-box; transform-origin: center; }
+.anim-flow { stroke-dasharray: 6 6; animation: sim-flow 0.8s linear infinite; }
+.anim-flow-slow { stroke-dasharray: 4 8; animation: sim-flow 1.6s linear infinite; }
+.anim-rise { animation: sim-rise 1.8s ease-out infinite; transform-box: fill-box; }
+.anim-pulse { animation: sim-pulse 1.4s ease-in-out infinite; }
+.anim-glow { animation: sim-glow 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.anim-shake { animation: sim-shake 0.18s linear 8; transform-box: fill-box; transform-origin: center bottom; }
+.anim-bob { animation: sim-bob 2.8s ease-in-out infinite; }
+.anim-flicker { animation: sim-flicker 0.9s linear 1; }
+.anim-pop { animation: sim-pop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+.anim-alarm { animation: sim-alarm 1.2s ease-in-out infinite; }
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-spin, .anim-spin-slow, .anim-flow, .anim-flow-slow, .anim-rise, .anim-pulse,
+  .anim-glow, .anim-shake, .anim-bob, .anim-flicker, .anim-alarm { animation: none; }
 }
