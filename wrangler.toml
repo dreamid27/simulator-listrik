@@ -1,4 +1,4 @@
 # Cloudflare Pages — lihat README bagian "Deploy".
-name = "faris-selo-my-id"
+name = "simulator-listrik"
 compatibility_date = "2026-09-30"
 pages_build_output_dir = "build/client"

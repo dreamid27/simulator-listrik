@@ -1,7 +1,7 @@
 /** Identitas situs, dipakai untuk meta tag, JSON-LD, sitemap, dan llms.txt. */
 export const SITE = {
   name: "Simulasi Listrik Rumah",
-  url: "https://faris.selo.my.id",
+  url: "https://listrik.selo.my.id",
   locale: "id_ID",
   lang: "id",
   themeColor: "#8200db",

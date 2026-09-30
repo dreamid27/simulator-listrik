@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-"Simulasi Listrik Rumah" is an Indonesian home-electricity simulator (UI copy is in Bahasa Indonesia). Routes: `/` (landing + FAQ), `/simulator` (the app), and a `*` catch-all that throws a 404 into the root `ErrorBoundary`. Simulation logic lives in `app/lib/sim/` (pure TS), UI in `app/components/sim/` and `app/components/art/`. Production domain: https://faris.selo.my.id, deployed on Cloudflare Pages from `git@github.com:dreamid27/faris-selo-my-id.git`.
+"Simulasi Listrik Rumah" is an Indonesian home-electricity simulator (UI copy is in Bahasa Indonesia). Routes: `/` (landing + FAQ), `/simulator` (the app), and a `*` catch-all that throws a 404 into the root `ErrorBoundary`. Simulation logic lives in `app/lib/sim/` (pure TS), UI in `app/components/sim/` and `app/components/art/`. Production domain: https://listrik.selo.my.id, deployed on Cloudflare Pages from `git@github.com:dreamid27/simulator-listrik.git` (production branch `master`).
 
 ## Commands
 

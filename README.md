@@ -3,7 +3,7 @@
 Simulator instalasi listrik rumah Indonesia untuk orang awam: hitung daya yang
 dibutuhkan, pahami kenapa MCB njeglek, dan perkirakan tagihan PLN.
 
-Produksi: **https://faris.selo.my.id**
+Produksi: **https://listrik.selo.my.id**
 
 React Router v7 (prerender statis, tanpa server), shadcn/ui (Base UI),
 Tailwind CSS v4, Zustand. Data pengguna disimpan di `localStorage`.
@@ -33,16 +33,16 @@ bun run preview    # layani build/client di http://localhost:3000
 
 ## Deploy ke Cloudflare Pages
 
-1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**, pilih repo `dreamid27/faris-selo-my-id`.
+1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**, pilih repo `dreamid27/simulator-listrik`.
 2. Pengaturan build:
    | Setting | Nilai |
    | --- | --- |
    | Framework preset | None |
    | Build command | `bun run build` |
    | Build output directory | `build/client` |
-   | Production branch | `main` |
+   | Production branch | `master` |
    | Environment variable | `BUN_VERSION` = `1.3.5` (opsional, mengunci versi bun) |
-3. Setelah deploy pertama: **Custom domains → Set up a domain → `faris.selo.my.id`**. Jika DNS `selo.my.id` ada di Cloudflare, CNAME dibuat otomatis; jika tidak, tambahkan `CNAME faris → <project>.pages.dev`.
+3. Setelah deploy pertama: **Custom domains → Set up a domain → `listrik.selo.my.id`**. Jika DNS `selo.my.id` ada di Cloudflare, CNAME dibuat otomatis; jika tidak, tambahkan `CNAME listrik → simulator-listrik.pages.dev`.
 4. Disarankan: aktifkan **Always Use HTTPS** dan **Web Analytics** (tanpa cookie) di dashboard.
 
 Alternatif lewat CLI: `bun run build && bunx wrangler pages deploy` (membaca `wrangler.toml`).
@@ -69,7 +69,7 @@ depan nginx.
 - `llms.txt` / `llms-full.txt` berisi ringkasan fakta untuk mesin jawab AI.
 - FAQ di beranda ter-render di HTML statis supaya bisa dikutip.
 
-Setelah domain aktif, daftarkan `https://faris.selo.my.id/sitemap.xml` di
+Setelah domain aktif, daftarkan `https://listrik.selo.my.id/sitemap.xml` di
 Google Search Console dan Bing Webmaster Tools. Perbarui `<lastmod>` di
 `public/sitemap.xml` saat konten berubah.
 

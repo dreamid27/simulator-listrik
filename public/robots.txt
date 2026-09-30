@@ -1,4 +1,4 @@
-# Simulasi Listrik Rumah — https://faris.selo.my.id
+# Simulasi Listrik Rumah — https://listrik.selo.my.id
 # Semua crawler, termasuk mesin pencari AI, dipersilakan mengindeks konten publik.
 
 User-agent: *
@@ -19,4 +19,4 @@ User-agent: Bingbot
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://faris.selo.my.id/sitemap.xml
+Sitemap: https://listrik.selo.my.id/sitemap.xml

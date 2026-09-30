@@ -84,7 +84,7 @@ function ogImage() {
     <tspan x="80" y="480">dan perkirakan tagihan PLN.</tspan>
   </text>
   <rect x="80" y="530" width="330" height="48" rx="24" fill="${SOFT}"/>
-  <text x="104" y="562" font-family="${sans}" font-size="22" font-weight="600" fill="${PRIMARY}">faris.selo.my.id</text>
+  <text x="104" y="562" font-family="${sans}" font-size="22" font-weight="600" fill="${PRIMARY}">listrik.selo.my.id</text>
 </svg>`)
 }
 
