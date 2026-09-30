@@ -56,7 +56,7 @@ export function McbBox() {
         </span>
         {state.elcb && (
           <span
-            className="inline-flex items-center gap-1 rounded-full bg-safe-soft px-2 py-0.5 text-[10.5px] font-medium text-safe"
+            className="inline-flex items-center gap-1 rounded-full bg-safe-soft px-2 py-0.5 text-[10.5px] font-medium text-safe-ink"
             title="ELCB/RCBO 30 mA terpasang di box MCB"
           >
             <ShieldCheckIcon className="size-3" />

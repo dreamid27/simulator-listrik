@@ -177,14 +177,14 @@ export function LearnView() {
           <UnitCard
             sym="V"
             name="Volt"
-            color="oklch(0.68 0.13 190)"
+            color="oklch(0.5 0.1 200)"
             analog="Tekanan air di pipa"
             text="Listrik PLN ± 220 V. Selalu sama, tidak perlu kamu atur."
           />
           <UnitCard
             sym="A"
             name="Ampere"
-            color="oklch(0.75 0.15 70)"
+            color="oklch(0.52 0.12 60)"
             analog="Derasnya aliran air"
             text="Makin banyak perangkat menyala, makin deras arusnya. MCB membatasi ini."
           />
@@ -198,7 +198,7 @@ export function LearnView() {
           <UnitCard
             sym="kWh"
             name="kilowatt-jam"
-            color="oklch(0.65 0.18 10)"
+            color="oklch(0.52 0.18 15)"
             analog="Jumlah air yang terpakai sebulan"
             text="Yang kamu bayar ke PLN. Setrika 350 W × 1 jam × 30 hari ≈ 10,5 kWh."
           />

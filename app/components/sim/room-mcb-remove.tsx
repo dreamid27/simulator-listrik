@@ -213,7 +213,7 @@ export function RoomMcbRemoveDialog() {
                   className={cn(
                     "mt-2 text-[11px]",
                     movedA > target.mcbAmp
-                      ? "font-medium text-warn"
+                      ? "font-medium text-warn-ink"
                       : "text-muted-foreground"
                   )}
                 >

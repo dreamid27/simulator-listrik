@@ -1,0 +1,25 @@
+{
+  "name": "Simulasi Listrik Rumah",
+  "short_name": "Simulasi Listrik",
+  "description": "Simulator instalasi listrik rumah Indonesia: hitung daya, pahami MCB njeglek, perkirakan tagihan PLN.",
+  "lang": "id",
+  "dir": "ltr",
+  "start_url": "/simulator",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fbf9fe",
+  "theme_color": "#8200db",
+  "categories": ["education", "utilities"],
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    {
+      "src": "/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

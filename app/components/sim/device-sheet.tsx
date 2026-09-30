@@ -215,7 +215,7 @@ export function PowerPath({ device }: { device: Device }) {
         )}
       >
         {running ? (
-          <CheckIcon className="mt-0.5 size-4 shrink-0 text-safe" />
+          <CheckIcon className="mt-0.5 size-4 shrink-0 text-safe-ink" />
         ) : (
           <XIcon className="mt-0.5 size-4 shrink-0 text-destructive" />
         )}
@@ -269,10 +269,10 @@ export function PowerPath({ device }: { device: Device }) {
                 <p className="flex items-center gap-1.5 text-[13px] font-semibold">
                   {n.title}
                   {n.status === "ok" && (
-                    <CheckIcon className="size-3.5 text-safe" />
+                    <CheckIcon className="size-3.5 text-safe-ink" />
                   )}
                   {n.status === "warn" && (
-                    <TriangleAlertIcon className="size-3.5 text-warn" />
+                    <TriangleAlertIcon className="size-3.5 text-warn-ink" />
                   )}
                   {(n.status === "broken" || n.status === "idle") && (
                     <XIcon className="size-3.5 text-destructive" />

@@ -271,7 +271,7 @@ export function TripDialog() {
                       </Button>
                     ))}
                     {heavyOn.length === 0 && (
-                      <span className="flex items-center gap-1 text-xs font-medium text-safe">
+                      <span className="flex items-center gap-1 text-xs font-medium text-safe-ink">
                         <CheckIcon className="size-3.5" /> Sudah dimatikan
                       </span>
                     )}
@@ -497,7 +497,7 @@ export function CatalogDialog() {
                 Sisa kapasitas {targetCircuit.name}:{" "}
                 <b
                   className={cn(
-                    targetLeftA < 2 ? "text-warn" : "text-foreground"
+                    targetLeftA < 2 ? "text-warn-ink" : "text-foreground"
                   )}
                 >
                   {fmt(Math.max(targetLeftA, 0), 1)} A
@@ -690,13 +690,13 @@ export function CatalogDialog() {
                           : `${fmt(minW)}–${fmt(maxW)} W`}
                       </span>
                       {risky ? (
-                        <span className="mt-0.5 rounded-full bg-warn-soft px-2 py-0.5 text-[10px] font-medium text-warn">
+                        <span className="mt-0.5 rounded-full bg-warn-soft px-2 py-0.5 text-[10px] font-medium text-warn-ink">
                           Melebihi sisa daya rumah
                         </span>
                       ) : (
                         tripsCircuit &&
                         targetCircuit && (
-                          <span className="mt-0.5 rounded-full bg-warn-soft px-2 py-0.5 text-[10px] font-medium text-warn">
+                          <span className="mt-0.5 rounded-full bg-warn-soft px-2 py-0.5 text-[10px] font-medium text-warn-ink">
                             Bisa bikin MCB {targetCircuit.mcbAmp} A turun
                           </span>
                         )
@@ -858,7 +858,7 @@ export function RoomDialog() {
               className={cn(
                 "text-xs",
                 plugged > room.sockets
-                  ? "font-medium text-warn"
+                  ? "font-medium text-warn-ink"
                   : "text-muted-foreground"
               )}
             >
@@ -1086,8 +1086,8 @@ export function CircuitDialog() {
               </>
             ) : (
               <>
-                <b className="text-safe">Pas.</b> MCB {c.mcbAmp} A akan turun
-                sebelum kabel {fmtMm(c.cable)} mm² kepanasan. Aturannya:{" "}
+                <b className="text-safe-ink">Pas.</b> MCB {c.mcbAmp} A akan
+                turun sebelum kabel {fmtMm(c.cable)} mm² kepanasan. Aturannya:{" "}
                 <i>MCB melindungi kabel</i>, jadi MCB tidak boleh lebih besar
                 dari kemampuan kabel.
               </>

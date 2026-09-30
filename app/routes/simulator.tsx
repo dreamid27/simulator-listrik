@@ -43,17 +43,36 @@ import { useUi, type Tab } from "~/components/sim/ui-store"
 import { Button } from "~/components/ui/button"
 import { fmt } from "~/lib/sim/engine"
 import { useSim, useSimStore } from "~/lib/sim/store"
+import { SITE, jsonLd, pageMeta } from "~/lib/site"
 import { cn } from "~/lib/utils"
 import type { Route } from "./+types/simulator"
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Simulator — Simulasi Listrik Rumah" },
-    {
-      name: "description",
-      content:
-        "Pasang perangkat, lihat beban listrik, dan pahami kenapa MCB njeglek.",
-    },
+    ...pageMeta({
+      title: "Simulator — Simulasi Listrik Rumah",
+      description:
+        "Pasang perangkat di rumah virtual, lihat beban listrik secara langsung, pahami kenapa MCB njeglek, dan hitung perkiraan tagihan PLN bulananmu.",
+      path: "/simulator",
+    }),
+    jsonLd({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: SITE.name,
+          item: `${SITE.url}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Simulator",
+          item: `${SITE.url}/simulator`,
+        },
+      ],
+    }),
   ]
 }
 
@@ -80,7 +99,7 @@ function Shell() {
         <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-4 py-2.5 sm:px-6">
           <Link to="/" className="flex shrink-0 items-center gap-2">
             <BrandMark className="size-8" />
-            <span className="hidden leading-tight sm:block">
+            <span className="sr-only leading-tight sm:not-sr-only sm:block">
               <span className="block font-heading text-[15px] font-semibold">
                 Simulasi Listrik Rumah
               </span>
@@ -101,7 +120,7 @@ function Shell() {
                   setTab(t.id)
                   window.scrollTo({ top: 0, behavior: "smooth" })
                 }}
-                aria-current={tab === t.id ? "page" : undefined}
+                aria-pressed={tab === t.id}
                 className={cn(
                   "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-[13px] font-medium transition sm:px-3.5",
                   tab === t.id
@@ -109,9 +128,11 @@ function Shell() {
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
-                <t.icon className="size-4" />
+                <t.icon aria-hidden className="size-4" />
                 <span
-                  className={cn(tab !== t.id && "hidden min-[420px]:inline")}
+                  className={cn(
+                    tab !== t.id && "sr-only min-[420px]:not-sr-only"
+                  )}
                 >
                   {t.label}
                 </span>
@@ -123,6 +144,7 @@ function Shell() {
             variant="outline"
             onClick={() => setSettingsOpen(true)}
             className="shrink-0"
+            aria-label={`Pengaturan rumah, daya ${fmt(state.dayaVA)} VA`}
           >
             <Settings2Icon />
             <span className="hidden md:inline">{fmt(state.dayaVA)} VA</span>
@@ -130,7 +152,13 @@ function Shell() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1400px] px-3 pt-4 sm:px-6 sm:pt-6">
+      <main
+        id="konten"
+        className="mx-auto max-w-[1400px] px-3 pt-4 sm:px-6 sm:pt-6"
+      >
+        <h1 className="sr-only">
+          Simulator listrik rumah — {TABS.find((t) => t.id === tab)?.label}
+        </h1>
         {tab === "rumah" && (
           <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_380px]">
             <div className="flex min-w-0 flex-col gap-3">
@@ -176,7 +204,10 @@ function MobileLoadBar() {
   const { state, analysis, dispatch } = useSim()
   const tone = loadTone(analysis.pct)
   return (
-    <div className="fixed inset-x-3 bottom-3 z-30 lg:hidden">
+    <aside
+      aria-label="Ringkasan beban listrik"
+      className="fixed inset-x-3 bottom-3 z-30 lg:hidden"
+    >
       <div className="flex items-center gap-3 rounded-2xl bg-card/95 p-2.5 pl-4 shadow-lg ring-1 ring-foreground/10 backdrop-blur">
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between text-xs">
@@ -195,7 +226,10 @@ function MobileLoadBar() {
               {state.mainOn ? `${Math.round(analysis.pct * 100)}%` : "Padam"}
             </span>
           </div>
-          <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-muted">
+          <div
+            aria-hidden
+            className="mt-1.5 h-2 overflow-hidden rounded-full bg-muted"
+          >
             <div
               className="h-full rounded-full transition-all duration-500"
               style={{
@@ -210,11 +244,12 @@ function MobileLoadBar() {
           variant={state.mainOn ? "outline" : "default"}
           onClick={() => dispatch({ type: "toggle-main" })}
           className={cn("shrink-0", !state.mainOn && "anim-alarm")}
+          aria-label={state.mainOn ? "Turunkan MCB utama" : "Naikkan MCB utama"}
         >
           <ZapIcon />
           {state.mainOn ? "MCB" : "Naikkan MCB"}
         </Button>
       </div>
-    </div>
+    </aside>
   )
 }

@@ -539,7 +539,7 @@ function RoomCell({ room }: { room: Room }) {
           className={cn(
             "flex items-center gap-1 rounded-md px-1 py-0.5 text-[11px] tabular-nums transition hover:bg-white/60",
             plugged > room.sockets
-              ? "font-semibold text-warn"
+              ? "font-semibold text-warn-ink"
               : powered
                 ? "text-foreground/60"
                 : "text-white/70"

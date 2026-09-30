@@ -69,7 +69,7 @@ export function CircuitMapDialog() {
                 <p
                   className={cn(
                     "text-xs font-medium",
-                    state.mainOn ? "text-safe" : "text-destructive"
+                    state.mainOn ? "text-safe-ink" : "text-destructive"
                   )}
                 >
                   {state.mainOn

@@ -98,7 +98,7 @@ export function HouseMenuButton() {
           : `${name} — tersimpan`
       }
     >
-      {flash ? <CheckIcon className="text-safe" /> : <FolderOpenIcon />}
+      {flash ? <CheckIcon className="text-safe-ink" /> : <FolderOpenIcon />}
       <span className="hidden truncate md:inline">
         {flash ? "Tersimpan" : name}
       </span>
@@ -307,7 +307,10 @@ export function HousesDialog() {
               )}
             </div>
             <p
-              className={cn("mt-2 text-xs", dirty ? "text-warn" : "text-safe")}
+              className={cn(
+                "mt-2 text-xs",
+                dirty ? "text-warn-ink" : "text-safe-ink"
+              )}
             >
               {!saved
                 ? "Belum pernah disimpan. Tetap aman di browser ini, tapi simpan supaya bisa dibuka lagi dari daftar."

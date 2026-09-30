@@ -284,9 +284,9 @@ export function BillView() {
                       className={cn(
                         "flex flex-1 items-center gap-1 text-xs font-medium",
                         all
-                          ? "text-safe"
+                          ? "text-safe-ink"
                           : stag
-                            ? "text-warn"
+                            ? "text-warn-ink"
                             : "text-destructive"
                       )}
                     >
@@ -398,7 +398,7 @@ function SumStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl bg-white/12 px-2 py-2.5 ring-1 ring-white/15">
       <p className="text-sm font-semibold tabular-nums">{value}</p>
-      <p className="text-[11px] text-primary-foreground/75">{label}</p>
+      <p className="text-[11px] text-primary-foreground/90">{label}</p>
     </div>
   )
 }

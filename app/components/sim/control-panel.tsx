@@ -63,14 +63,14 @@ export function loadTone(pct: number) {
       cls: "text-destructive",
     }
   if (pct >= 0.8)
-    return { color: "var(--warn)", label: "Hampir penuh", cls: "text-warn" }
+    return { color: "var(--warn)", label: "Hampir penuh", cls: "text-warn-ink" }
   if (pct >= 0.5)
     return {
       color: "var(--energy-deep)",
       label: "Sedang",
       cls: "text-energy-deep",
     }
-  return { color: "var(--safe)", label: "Longgar", cls: "text-safe" }
+  return { color: "var(--safe)", label: "Longgar", cls: "text-safe-ink" }
 }
 
 /** Setengah lingkaran pengukur beban. */
@@ -312,7 +312,7 @@ const LEVEL = {
   },
   caution: {
     icon: TriangleAlertIcon,
-    cls: "text-warn",
+    cls: "text-warn-ink",
     bg: "bg-warn-soft",
     label: "Perhatian",
   },
@@ -342,7 +342,7 @@ export function SafetyPanel() {
               </span>
             )}
             {caution > 0 && (
-              <span className="rounded-full bg-warn-soft px-2 py-0.5 text-warn">
+              <span className="rounded-full bg-warn-soft px-2 py-0.5 text-warn-ink">
                 {caution} perhatian
               </span>
             )}
@@ -354,7 +354,7 @@ export function SafetyPanel() {
         <div className="flex items-center gap-3 rounded-xl bg-safe-soft p-3">
           <Volti mood="cheer" className="h-14 w-12 shrink-0" />
           <div>
-            <p className="flex items-center gap-1.5 text-sm font-semibold text-safe">
+            <p className="flex items-center gap-1.5 text-sm font-semibold text-safe-ink">
               <CircleCheckIcon className="size-4" /> Instalasi aman
             </p>
             <p className="text-xs text-muted-foreground">

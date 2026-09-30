@@ -1,0 +1,22 @@
+# Simulasi Listrik Rumah — https://faris.selo.my.id
+# Semua crawler, termasuk mesin pencari AI, dipersilakan mengindeks konten publik.
+
+User-agent: *
+Allow: /
+
+# Mesin pencari & asisten AI (Generative Engine Optimization)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://faris.selo.my.id/sitemap.xml

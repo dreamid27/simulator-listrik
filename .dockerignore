@@ -1,4 +1,7 @@
 .react-router
 build
 node_modules
-README.md
+.git
+.playwright-mcp
+Dockerfile
+*.md
