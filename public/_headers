@@ -27,7 +27,11 @@
 /llms-full.txt
   Content-Type: text/plain; charset=utf-8
 
-# Domain pratinjau *.pages.dev jangan diindeks (duplikat domain utama).
+# Domain bawaan *.workers.dev / *.pages.dev jangan diindeks (duplikat domain utama).
+https://:worker.:account.workers.dev/*
+  X-Robots-Tag: noindex
+https://:version-:worker.:account.workers.dev/*
+  X-Robots-Tag: noindex
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
 https://:version.:project.pages.dev/*

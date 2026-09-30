@@ -31,24 +31,27 @@ bun run preview    # layani build/client di http://localhost:3000
 - menyisipkan Content-Security-Policy per halaman dengan hash SHA-256 untuk skrip inline;
 - membuat `llms.txt` dan `llms-full.txt` dari data katalog, tarif, glosarium, dan FAQ.
 
-## Deploy ke Cloudflare Pages
+## Deploy ke Cloudflare
 
-1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**, pilih repo `dreamid27/simulator-listrik`.
-2. Pengaturan build:
-   | Setting | Nilai |
-   | --- | --- |
-   | Framework preset | None |
-   | Build command | `bun run build` |
-   | Build output directory | `build/client` |
-   | Production branch | `master` |
-   | Environment variable | `BUN_VERSION` = `1.3.5` (opsional, mengunci versi bun) |
-3. Setelah deploy pertama: **Custom domains → Set up a domain → `listrik.selo.my.id`**. Jika DNS `selo.my.id` ada di Cloudflare, CNAME dibuat otomatis; jika tidak, tambahkan `CNAME listrik → simulator-listrik.pages.dev`.
-4. Disarankan: aktifkan **Always Use HTTPS** dan **Web Analytics** (tanpa cookie) di dashboard.
+`wrangler.toml` mengonfigurasi **Workers static assets** (`build/client`,
+`html_handling = "auto-trailing-slash"`, `not_found_handling = "404-page"`).
+`public/_headers` berlaku di Workers maupun Pages.
 
-Alternatif lewat CLI: `bun run build && bunx wrangler pages deploy` (membaca `wrangler.toml`).
+### Workers (Workers Builds, terhubung ke Git)
 
-Header keamanan & cache ada di `public/_headers`. Domain `*.pages.dev` diberi
-`X-Robots-Tag: noindex` supaya tidak bersaing dengan domain utama.
+1. **Workers & Pages → Create → Import a repository** → `dreamid27/simulator-listrik`.
+2. Build command: `bun run build` · Deploy command: `npx wrangler deploy` · branch `master`.
+3. **Settings → Domains & Routes → Add → Custom domain** → `listrik.selo.my.id`.
+
+Deploy manual dari lokal: `bun run build && bunx wrangler deploy`.
+
+### Alternatif: Pages
+
+Build command `bun run build`, output directory `build/client`, tanpa deploy
+command. Deploy manual: `bunx wrangler pages deploy build/client --project-name simulator-listrik`.
+
+Domain bawaan `*.workers.dev` / `*.pages.dev` diberi `X-Robots-Tag: noindex`
+supaya tidak bersaing dengan domain utama.
 
 ## Self-host dengan nginx / Docker
 

@@ -1,4 +1,11 @@
-# Cloudflare Pages — lihat README bagian "Deploy".
+# Cloudflare Workers (static assets) — dipakai oleh `npx wrangler deploy`,
+# termasuk deploy command bawaan Workers Builds. Lihat README bagian "Deploy".
 name = "simulator-listrik"
 compatibility_date = "2026-09-30"
-pages_build_output_dir = "build/client"
+
+[assets]
+directory = "./build/client"
+# /simulator → simulator.html; /simulator/ dialihkan ke /simulator.
+html_handling = "auto-trailing-slash"
+# URL yang tidak ada → 404.html dengan status 404.
+not_found_handling = "404-page"

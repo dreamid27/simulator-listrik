@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-"Simulasi Listrik Rumah" is an Indonesian home-electricity simulator (UI copy is in Bahasa Indonesia). Routes: `/` (landing + FAQ), `/simulator` (the app), and a `*` catch-all that throws a 404 into the root `ErrorBoundary`. Simulation logic lives in `app/lib/sim/` (pure TS), UI in `app/components/sim/` and `app/components/art/`. Production domain: https://listrik.selo.my.id, deployed on Cloudflare Pages from `git@github.com:dreamid27/simulator-listrik.git` (production branch `master`).
+"Simulasi Listrik Rumah" is an Indonesian home-electricity simulator (UI copy is in Bahasa Indonesia). Routes: `/` (landing + FAQ), `/simulator` (the app), and a `*` catch-all that throws a 404 into the root `ErrorBoundary`. Simulation logic lives in `app/lib/sim/` (pure TS), UI in `app/components/sim/` and `app/components/art/`. Production domain: https://listrik.selo.my.id, deployed on Cloudflare Workers (static assets) from `git@github.com:dreamid27/simulator-listrik.git` (production branch `master`).
 
 ## Commands
 
@@ -39,7 +39,7 @@ Prettier config: no semicolons, double quotes, trailing commas `es5`, 80 columns
 
 ## Deployment
 
-- **Cloudflare Pages:** build `bun run build`, output `build/client`. Headers/caching in `public/_headers`.
+- **Cloudflare Workers** (static assets, `wrangler.toml`): build `bun run build`, deploy `npx wrangler deploy`. Headers/caching in `public/_headers`. Pages also works (output dir `build/client`).
 - **Self-host:** `Dockerfile` builds with bun and serves via nginx using `nginx/default.conf`; keep its headers in sync with `public/_headers`.
 
 ## Accessibility

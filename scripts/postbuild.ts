@@ -41,6 +41,9 @@ async function htmlFiles(dir: string): Promise<string[]> {
   return nested.flat()
 }
 
+// Manifest Vite tidak perlu ikut diunggah.
+await rm(join(ROOT, ".vite"), { recursive: true, force: true })
+
 // 1. Rapikan URL
 for (const file of await htmlFiles(ROOT)) {
   const rel = relative(ROOT, file)
